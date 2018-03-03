@@ -5,7 +5,7 @@ let Tile_Dimension = 40;
 let cells = new Array(Tiles);
 let cell_unrevealed_color = (245, 245, 245);
 let cell_revealed_color = (200, 200, 200);
-let hard = 1; // was 0.4
+let hard = 0.4;
 let medium = 0.25;
 let easy = 0.1;
 let first_click = true;
@@ -106,7 +106,7 @@ function fill_with_bombs(difficulty, x, y){
     if (difficulty == "Hard"){
         for (i = 0; i < Tiles; i++){
             for (j = 0; j < Tiles; j++){
-                if (Math.random() < hard && i != cell_x_ref && j != cell_y_ref){
+                if (Math.random() < hard && (j != cell_y_ref || i != cell_x_ref)){
                     cells[i][j].bomb = true;
                 }
             }
@@ -114,7 +114,7 @@ function fill_with_bombs(difficulty, x, y){
     } else if (difficulty == "Medium"){
         for (i = 0; i < Tiles; i++){
             for (j = 0; j < Tiles; j++){
-                if (Math.random() < medium && i != cell_x_ref && j != cell_y_ref){
+                if (Math.random() < medium && (i != cell_x_ref || j != cell_y_ref) ){
                     cells[i][j].bomb = true;
                 }
             }
@@ -122,7 +122,7 @@ function fill_with_bombs(difficulty, x, y){
     } else {
         for (i = 0; i < Tiles; i++){
             for (j = 0; j < Tiles; j++){
-                if (Math.random() < easy && i != cell_x_ref && j != cell_y_ref){
+                if (Math.random() < easy && (i != cell_x_ref || j != cell_y_ref)){
                     cells[i][j].bomb = true;
                 }
             }
@@ -136,5 +136,5 @@ function selfdestruct(){
 
 function endsequence(){
     alert("You clicked on a bomb");
-    setTimeout(selfdestruct, 3000);
+    setTimeout(selfdestruct, 1500);
 }
