@@ -57,6 +57,8 @@ function mousePressed(){
     // Logic that tests if a cell has been clicked on
     if (first_click == true){
         fill_with_bombs(difficulty, mouseX, mouseY);
+        //count_all_bombs();
+        
         for (i = 0; i < Tiles; i++){
             for (j = 0; j < Tiles; j++){
                 if (mouseX >= cells[i][j].x 
@@ -92,15 +94,10 @@ function fill_with_bombs(difficulty, x, y){
     // apparently i don't need the else clauses???
     if (x % 1 == 0){
         cell_x_ref = Math.floor(x / Tile_Dimension);
-    } else {
-        cell_x_ref = Math.floor(x / Tile_Dimension);
     }
     if (y % 1 == 0){
         cell_y_ref = Math.floor(y / Tile_Dimension);
-    } else {
-        cell_y_ref = Math.floor(y / Tile_Dimension);
     }
-    
 
     // Fill cells with bombs probabilisitically as long as they weren't the first clicked on
     if (difficulty == "Hard"){
@@ -129,6 +126,32 @@ function fill_with_bombs(difficulty, x, y){
         }
     }
 }
+
+/*
+function count_all_bombs(){
+    for (i = 0; i < Tiles; i++){
+        for (j = 0; j < Tiles; j++){
+            
+        }
+    }
+}
+
+    this.check_neighbors = function(){
+        let count = 0;
+
+        for (i = this.x_ref - 1; i < this.x_ref + 2; i++){
+            for (j = this.y_ref - 1; j < this.y_ref + 2; j++){
+                if (i >= 0 && j >= 0 && i < Tiles && j < Tiles){
+                    if (cells[i][j].bomb == true){
+                        count += 1;
+                    }
+                }
+            }
+        }
+        this.neighbor_bombs = count;
+            
+    }
+*/
 
 function selfdestruct(){
     location.reload();

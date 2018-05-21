@@ -1,9 +1,9 @@
-function Cell(x, y, bomb=false){
+function Cell(x, y){
     this.x_ref = x;
     this.y_ref = y;
     this.x = x * Tile_Dimension;
     this.y = y * Tile_Dimension;
-    this.bomb = bomb;
+    this.bomb = false;
     this.revealed = false;
     this.neighbor_bombs = 0;
     
@@ -51,7 +51,7 @@ function Cell(x, y, bomb=false){
         }
         this.neighbor_bombs = count;
             
-        }
     }
+}
 
 
