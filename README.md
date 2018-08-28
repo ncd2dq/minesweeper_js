@@ -1,2 +1,4 @@
 # minesweeper_js
-Minesweeper in JS
+
+
+Simple minesweeper game written in Javascript using the p5.Js environment
